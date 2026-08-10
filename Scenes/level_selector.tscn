@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://cbplruc4nwecw"]
+
+[ext_resource type="Script" uid="uid://b1pwsbgw6xhp" path="res://scripts/level_selector.gd" id="1_22lal"]
+
+[node name="level_selector" type="Control" unique_id=225239249]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_22lal")
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=2133378409]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 3
+
+[node name="Button" type="Button" parent="GridContainer" unique_id=1810909797]
+layout_mode = 2
+text = "Level 1"
+
+[node name="Button2" type="Button" parent="GridContainer" unique_id=1403265044]
+layout_mode = 2
+text = "Level 2"
+
+[node name="Button3" type="Button" parent="GridContainer" unique_id=304517161]
+layout_mode = 2
+text = "Level 3"
+
+[node name="Button4" type="Button" parent="GridContainer" unique_id=1543556357]
+layout_mode = 2
+text = "Level 4"
+
+[node name="Button5" type="Button" parent="GridContainer" unique_id=1415593399]
+layout_mode = 2
+text = "Level 5"
+
+[node name="Button6" type="Button" parent="GridContainer" unique_id=1976700796]
+layout_mode = 2
+text = "Level 6"
+
+[connection signal="pressed" from="GridContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="GridContainer/Button2" to="." method="_on_button_2_pressed"]

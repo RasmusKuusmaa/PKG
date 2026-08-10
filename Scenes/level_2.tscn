@@ -1,0 +1,60 @@
+[gd_scene format=4 uid="uid://t4xlqjobg3ne"]
+
+[ext_resource type="Script" uid="uid://bot08hkfqtdnl" path="res://Scripts/main.gd" id="1_1q6tm"]
+[ext_resource type="Texture2D" uid="uid://cqrmqa0rjgf4n" path="res://Assets/PKTM1.png" id="2_v36qu"]
+[ext_resource type="PackedScene" uid="uid://cuwrbt1nd3vud" path="res://Scenes/player.tscn" id="3_cggpd"]
+[ext_resource type="Texture2D" uid="uid://bnhab0jr438e0" path="res://Assets/PKFinishFlag1.png" id="4_055b2"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jjvhh"]
+texture = ExtResource("2_v36qu")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 3.057598, 8, 1.978447, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -0.71943474, 8, -0.35971642, 8, 8, -8, 8)
+2:0/0/custom_data_0 = true
+
+[sub_resource type="TileSet" id="TileSet_kry3j"]
+physics_layer_0/collision_layer = 1
+physics_layer_1/collision_layer = 1
+custom_data_layer_0/name = "deadly"
+custom_data_layer_0/type = 1
+sources/0 = SubResource("TileSetAtlasSource_jjvhh")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jjvhh"]
+
+[node name="Main" type="Node2D" unique_id=1408991260]
+script = ExtResource("1_1q6tm")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=963698690]
+tile_map_data = PackedByteArray("AAAAACcAAAAAAAAAAAABACcAAAAAAAAAAAACACcAAAAAAAAAAAADACcAAAAAAAAAAAAEACcAAAAAAAAAAAAFACcAAAAAAAAAAAAGACcAAAAAAAAAAAAHACcAAAAAAAAAAAAIACcAAAAAAAAAAAAJACcAAAAAAAAAAAAKACcAAAAAAAAAAAAKACYAAAAAAAAAAAALACYAAAAAAAAAAAAMACYAAAAAAAAAAAANACcAAAAAAAAAAAANACUAAAAAAAAAAAAOACUAAAAAAAAAAAAPACUAAAAAAAAAAAAQACUAAAAAAAAAAAARACUAAAAAAAAAAAASACUAAAAAAAAAAAATACUAAAAAAAAAAAAUACQAAAAAAAAAAAAVACQAAAAAAAAAAAAWACQAAAAAAAAAAAAXACQAAAAAAAAAAAAYACQAAAAAAAAAAAAZACQAAAAAAAAAAAAaACQAAAAAAAAAAAAbACQAAAAAAAAAAAAcACQAAAAAAAAAAAAdACQAAAAAAAAAAAAeACQAAAAAAAAAAAAfACQAAAAAAAAAAAAgACQAAAAAAAAAAAAhACQAAAAAAAAAAAAiACQAAAAAAAAAAAAjACQAAAAAAAAAAAAkACQAAAAAAAAAAAAlACQAAAAAAAAAAAAmACQAAAAAAAAAAAAnACQAAAAAAAAAAAAoACQAAAAAAAAAAAApACQAAAAAAAAAAAAqACQAAAAAAAAAAAArACQAAAAAAAAAAAAsACQAAAAAAAAAAAAtACQAAAAAAAAAAAAuACQAAAAAAAAAAAAvACQAAAAAAAAAAAAwACQAAAAAAAAAAAAxACQAAAAAAAAAAAAyACQAAAAAAAAAAAAzACQAAAAAAAAAAAA0ACQAAAAAAAAAAAA1ACQAAAAAAAAAAAA2ACQAAAAAAAAAAAA3ACMAAAAAAAAAAAA4ACMAAAAAAAAAAAA5ACMAAAAAAAAAAAA6ACMAAAAAAAAAAAA7ACMAAAAAAAAAAAA8ACMAAAAAAAAAAAAHACIAAAABAAAAAAAIACIAAAABAAAAAAANACAAAAABAAAAAAAOACAAAAABAAAAAAAPACAAAAABAAAAAAATAB0AAAABAAAAAAAUAB0AAAABAAAAAAAVAB0AAAABAAAAAAAWAB0AAAABAAAAAAAJAB0AAAABAAAAAAAKAB0AAAABAAAAAAAVABsAAAABAAAAAAAWABsAAAABAAAAAAAXABsAAAABAAAAAAAYABsAAAABAAAAAAAZABsAAAABAAAAAAAaABsAAAABAAAAAAAeABgAAAABAAAAAAAfABgAAAABAAAAAAAgABgAAAABAAAAAAAgABcAAAABAAAAAAAKABQAAAABAAAAAAALABQAAAABAAAAAAAMABQAAAABAAAAAAANABQAAAABAAAAAAAmABQAAAABAAAAAAAnABQAAAABAAAAAAAoABQAAAABAAAAAAApABQAAAABAAAAAAAlAA4AAAABAAAAAAAmAA4AAAABAAAAAAAgABIAAAABAAAAAAAhABIAAAABAAAAAAAuABIAAAABAAAAAAAvABIAAAABAAAAAAAwABIAAAABAAAAAAAxABIAAAABAAAAAAA2AA8AAAABAAAAAAA3AA8AAAABAAAAAAA4AA8AAAABAAAAAAAUACMAAAACAAAAAAAVACMAAAACAAAAAAAWACMAAAACAAAAAAA=")
+tile_set = SubResource("TileSet_kry3j")
+
+[node name="Player" parent="." unique_id=1261591955 instance=ExtResource("3_cggpd")]
+position = Vector2(48, 612)
+
+[node name="Finish" type="Area2D" parent="." unique_id=714728970]
+position = Vector2(521, 369)
+
+[node name="Sprite2D" type="Sprite2D" parent="Finish" unique_id=1053393367]
+texture = ExtResource("4_055b2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Finish" unique_id=1193543971]
+shape = SubResource("CircleShape2D_jjvhh")
+
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=1323593861]
+position = Vector2(48, 614)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=795051815]
+position = Vector2(287, 479)
+zoom = Vector2(5, 5)
+
+[node name="lvl2" type="Label" parent="." unique_id=1911568440]
+offset_left = 198.0
+offset_top = 436.0
+offset_right = 332.0
+offset_bottom = 493.0
+text = "lvl 2"
+
+[connection signal="body_entered" from="Finish" to="." method="_on_finish_body_entered"]

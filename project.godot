@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="PK"
-run/main_scene="uid://dn5mwmjg2hacb"
+run/main_scene="uid://cbplruc4nwecw"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
