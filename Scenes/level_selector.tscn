@@ -11,8 +11,10 @@ script = ExtResource("1_22lal")
 
 [node name="GridContainer" type="GridContainer" parent="." unique_id=2133378409]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 263.0
+offset_top = 154.0
+offset_right = 488.0
+offset_bottom = 282.0
 columns = 3
 
 [node name="Button" type="Button" parent="GridContainer" unique_id=1810909797]
@@ -38,6 +40,10 @@ text = "Level 5"
 [node name="Button6" type="Button" parent="GridContainer" unique_id=1976700796]
 layout_mode = 2
 text = "Level 6"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1958252057]
+anchor_mode = 0
+zoom = Vector2(5, 5)
 
 [connection signal="pressed" from="GridContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="GridContainer/Button2" to="." method="_on_button_2_pressed"]
