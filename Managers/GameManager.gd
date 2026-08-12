@@ -2,8 +2,9 @@ extends Node
 
 var completed_levels: Dictionary = {}
 
-func complete_level(level_id: String):
-	completed_levels[level_id] = true
+func complete_level(level_id: String, level_time):
+	completed_levels[level_id] = level_time	
 
-func is_level_completed(level_id: String):
-	return completed_levels.has(level_id)
+func get_level_time(level_id: String):
+	if completed_levels.has(level_id):
+		return completed_levels[level_id]

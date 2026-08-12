@@ -6,10 +6,14 @@ func _ready() -> void:
 	update_level_buttons()
 	
 func update_level_buttons() -> void:
-	if GM.is_level_completed("level_1"):
-		$GridContainer/Button.text = "level 1 completed"
-	if GM.is_level_completed("level_2"):
-		$GridContainer/Button2.text = "level 2 completed"
+	var lvl1 = GM.get_level_time("level_1")
+	var lvl2 = GM.get_level_time("level_2")
+
+	if lvl1 != null:
+		$GridContainer/Button.text = "Level 1 - %.2f seconds" % lvl1
+
+	if lvl2 != null:
+		$GridContainer/Button2.text = "Level 2 - %.2f seconds" % lvl2
 
 func _on_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/level_1.tscn")
