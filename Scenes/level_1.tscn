@@ -50,4 +50,11 @@ position = Vector2(48, 614)
 position = Vector2(287, 479)
 zoom = Vector2(5, 5)
 
+[node name="TimerLabel" type="Label" parent="." unique_id=1242028688]
+offset_left = 7.0
+offset_top = 451.0
+offset_right = 74.0
+offset_bottom = 474.0
+text = "0.0"
+
 [connection signal="body_entered" from="Finish" to="." method="_on_finish_body_entered"]

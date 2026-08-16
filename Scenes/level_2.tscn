@@ -58,4 +58,11 @@ offset_right = 332.0
 offset_bottom = 493.0
 text = "lvl 2"
 
+[node name="TimerLabel" type="Label" parent="." unique_id=1759831560]
+offset_left = 14.0
+offset_top = 386.0
+offset_right = 52.0
+offset_bottom = 434.0
+text = "0.0"
+
 [connection signal="body_entered" from="Finish" to="." method="_on_finish_body_entered"]

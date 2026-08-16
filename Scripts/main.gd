@@ -14,6 +14,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if timer_running:
 		level_time += delta
+		$TimerLabel.text = "%.2f" % level_time
 
 
 func _on_finish_body_entered(body: Node2D) -> void:
