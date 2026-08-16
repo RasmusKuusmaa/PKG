@@ -35,7 +35,8 @@ func respawn():
 
 
 func check_deadly_tile():
-
+	if self.position.y > 2000:
+		respawn()
 	var check_position = global_position + Vector2(0, 50)
 	var cell = tilemap.local_to_map(tilemap.to_local(check_position))
 	var data = tilemap.get_cell_tile_data(cell)
