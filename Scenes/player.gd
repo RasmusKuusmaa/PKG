@@ -6,7 +6,9 @@ const ACCELERATION = 1800.0
 const FRICTION = 1400.0
 const JUMP_VELOCITY = -400.0
 const COYOTE_TIME = 0.12
+const JUMP_BUFFER_TIME = 0.12
 
+var jump_buffer_timer := 0.0
 var coyote_timer := 0.0
 @onready var tilemap = $"../TileMapLayer"
 
@@ -20,9 +22,15 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 	
 	# Jump
-	if Input.is_action_just_pressed("ui_accept") and coyote_timer > 0:
+	if Input.is_action_just_pressed("ui_accept"):
+		jump_buffer_timer = JUMP_BUFFER_TIME
+	else:
+		jump_buffer_timer -= delta
+		
+	if jump_buffer_timer > 0 and coyote_timer > 0:
 		velocity.y = JUMP_VELOCITY
 		coyote_timer = 0
+		jump_buffer_timer = 0
 
 	# Movement
 	var direction := Input.get_axis("ui_left", "ui_right")
