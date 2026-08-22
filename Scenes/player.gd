@@ -7,6 +7,7 @@ const FRICTION = 1400.0
 const JUMP_VELOCITY = -400.0
 const COYOTE_TIME = 0.12
 const JUMP_BUFFER_TIME = 0.12
+const JUMP_CUT_MULTIPLIER = 0.5
 
 var jump_buffer_timer := 0.0
 var coyote_timer := 0.0
@@ -31,7 +32,10 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 		coyote_timer = 0
 		jump_buffer_timer = 0
-
+	
+	if Input.is_action_just_released("ui_accept") and velocity.y < 0:
+		velocity.y *= JUMP_CUT_MULTIPLIER
+		
 	# Movement
 	var direction := Input.get_axis("ui_left", "ui_right")
 
